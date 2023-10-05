@@ -7,37 +7,43 @@ function App() {
 
   return (
    
-    <div className="container " id="main-sheet"> 
-      <div className="flex flex-row" id="header-section">
-        <div className="basis-1/2 px-4"id="character-name">
-          Name Here
+    <div className="container m-12 border-solid border-2" id="main-sheet"> 
+
+        {/* Header Section */}
+      <div className="grid grid-rows-3 grid-flow-col" id="header-section">
+        <div className="shadow p-4 input-group row-span-3" id="character-name">
+          <label htmlFor="character-name" > Character Name: </label>
+          <br/>
+          <input type="text" id="character-name" className="border-solid border"/>
         </div>
-        <div className="basis-1/2 px-4"id="basic-char-info">
-          Info Here
+        <div className="shadow p-4" id="char-race">
+          <label htmlFor="char-race" className="pr-3">Race:</label>
+          <br/>
+          <input className="border-solid border" type="text" id="char-race" />
+        </div>
+        <div className="shadow p-4 row-span-2" id="char-class">
+          <label htmlFor="char-class" className="pr-3">Class(es):</label>
+          <br/>
+          <input type="text" id="char-class" className="border-solid border" />
+        </div>
+         <div className="shadow p-4" id="char-alignment">
+          <label htmlFor="char-alignment" className="pr-3">Character Alignment:</label>
+          <br/>
+          <input type="text" id="char-alignment" className="border-solid border" />
+        </div>
+        <div className="shadow p-4 row-span-2" id="char-background">
+          <label htmlFor="char-background" className="pr-3">Character Background:</label>
+          <br/>
+          <input type="text" id="char-background" className="border-solid border" />
         </div>
       </div>
+
+
+
+      
     </div>
   );
 };
   
 
 export default App
-
-
-  {/* <div className="character-sheet">
-  
-      <div className="input-group">
-        <label htmlFor="character-name" > Character Name:</label>
-        <input type="text" id="character-name" />
-      </div>
-
-      <div className="input-group">
-        <label htmlFor="character-class">Character Class:</label>
-        <input type="text" id="character-class" />
-      </div>
-
-      <div className="input-group">
-        <label htmlFor="character-level"> Character Level:</label>
-        <input type="text" id="character-level" />
-      </div>
-      </div> */}
