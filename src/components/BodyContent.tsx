@@ -10,21 +10,21 @@ export default function BodyContent () {
           <div className="flex flex-col text-sm px-4 border-x-2 relative">
              Proficiency Bonus
           <div className=" h-18 w-18 p-4 border-4 flex flex-col flex-none justify-center items-center">
-              <input className=" p-2 box-content text-xl text-center outline-none" maxLength={2} size={2} type="text">
+              <input className=" p-2 box-content text-xl text-center hover:outline-dashed" maxLength={2} size={2} type="text">
               </input>
           </div>
           </div>
           <div className="flex flex-col text-sm px-2 border-x-2"> 
             Passive Perception 
                <div className=" h-18 w-18 p-4 border-4 flex flex-col flex-none justify-center items-center">
-              <input className=" p-2 box-content text-xl text-center outline-none" maxLength={2} size={2}>
+              <input className=" p-2 box-content text-xl text-center hover:outline-dashed" maxLength={2} size={2}>
               </input>
           </div>
           </div>
           <div className="flex flex-col text-sm px-2 border-x-2">
              Inspiration 
                <div className=" h-18 w-18 p-4 border-4 flex flex-col flex-none justify-center items-center">
-              <input className=" p-2 box-content text-xl text-center outline-none" maxLength={2} size={2}>
+              <input className=" p-2 box-content text-xl text-center hover:outline-dashed" maxLength={2} size={2}>
               </input>
           </div>
           </div>
