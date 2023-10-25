@@ -1,4 +1,13 @@
 
+const abilityTitles = ["Strength", "Dexterity", "Constitution", "Intelligence", "Wisdom", "Charisma"]
+
+// function AbilityScoreBlock = () => {
+
+//   return(
+    
+//   )
+// }
+
 export default function BodyContent () {
     return (
         
@@ -27,44 +36,22 @@ export default function BodyContent () {
               <input className=" p-2 box-content text-xl text-center hover:outline-dashed" maxLength={2} size={2}>
               </input>
           </div>
-          </div>
         </div>
-        <div className="row-span-1 col-span-2 border-solid border-4 mr-2">
-          <div className="box-border h-24 w-24 border-4 relative">
-            <div className="box-border h-9 w-9 p-2 border-4 absolute top-0">
+       
+        </div>
+        
+        { abilityTitles.map((title) => {
+          return (
+            <div className="row-span-1 col-span-2 border-solid border-4 mr-2">
+              <div className="box-border h-24 w-24 border-4 relative">
+                <div className="box-border h-9 w-9 p-2 border-4 absolute top-0">
+                  
+                </div>
+              </div>
             </div>
-          </div>
-        </div>
-        <div className="row-span-1 col-span-2 border-solid border-4 mr-2">
-          <div className="box-border h-24 w-24 border-4 relative">
-            <div className="box-border h-9 w-9 p-2 border-4 absolute top-0">
-            </div>
-          </div>
-        </div>
-        <div className="row-span-1 col-span-2 border-solid border-4 mr-2">
-          <div className="box-border h-24 w-24 border-4 relative">
-            <div className="box-border h-9 w-9 p-2 border-4 absolute top-0">
-            </div>
-          </div>
-        </div>
-        <div className="row-span-1 col-span-2 border-solid border-4 mr-2">
-          <div className="box-border h-24 w-24 border-4 relative">
-            <div className="box-border h-9 w-9 p-2 border-4 absolute top-0">
-            </div>
-          </div>
-        </div>
-        <div className="row-span-1 col-span-2 border-solid border-4 mr-2">
-          <div className="box-border h-24 w-24 border-4 relative">
-            <div className="box-border h-9 w-9 p-2 border-4 absolute top-0">
-            </div>
-          </div>
-        </div>
-        <div className="row-span-1 col-span-2 border-solid border-4 mr-2">
-          <div className="box-border h-24 w-24 border-4 relative">
-            <div className="box-border h-9 w-9 p-2 border-4 absolute top-0">
-            </div>
-          </div>
-        </div>
+          )
+        })}
+     
         
         
         {/* Right Column */}
