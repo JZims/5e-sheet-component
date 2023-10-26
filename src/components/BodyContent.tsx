@@ -44,8 +44,9 @@ export default function BodyContent () {
           return (
             <div className="row-span-1 col-span-2 border-solid border-4 mr-2">
               <div className="box-border h-24 w-24 border-4 relative">
+              <input id="`${title}'Input" className=" p-2 box-content text-xl text-center hover:outline-dashed absolute top-1 right-1" maxLength={2} size={2} placeholder="8" />
+              <div className="absolute bottom-0 left-0"> {title} </div>
                 <div className="box-border h-9 w-9 p-2 border-4 absolute top-0">
-                  
                 </div>
               </div>
             </div>
