@@ -1,66 +1,104 @@
+import { ReactElement } from "react";
 
-const abilityTitles = ["Strength", "Dexterity", "Constitution", "Intelligence", "Wisdom", "Charisma"]
+const abilityTitles = [
+  "Strength",
+  "Dexterity",
+  "Constitution",
+  "Intelligence",
+  "Wisdom",
+  "Charisma",
+];
 
-// function AbilityScoreBlock = () => {
+const AbilityScoreBlock = (stat: string): ReactElement => {
+  return (
+    <>
+      <div className="col-span-2 row-span-1 mr-2 grid border-4 border-solid">
+        <div className="relative box-border h-24 w-24 border-4">
+          <input
+            id="`${title}'Input"
+            className=" absolute right-1 top-1 box-content p-2 text-center text-xl hover:outline-dashed"
+            maxLength={2}
+            size={2}
+            placeholder="8"
+          />
+          <div className="absolute bottom-0 left-0"> {stat} </div>
+          <div className="absolute top-0 box-border h-9 w-9 border-4 p-2"></div>
+        </div>
+        <div id="" className="justify-self-end">
+          Hey
+        </div>
+      </div>
+    </>
+  );
+};
 
-//   return(
-    
-//   )
-// }
-
-export default function BodyContent () {
-    return (
-        
-    <div className="border-solid border-8" id="main-sheet"> 
-
-         { /* Left Column */ }
-      <div className="md:grid grid-rows-8 grid-cols-4 grid-flow-col xs:flex xs:flex-col gap-4">
-        <div className="row-span-1 col-span-2 mr-2 text-center grid grid-cols-3 grid-flow-col p-2 place-content-baseline">
-          <div className="flex flex-col text-sm px-4 border-x-2 relative">
-              <label htmlFor="profBonus"> Proficiency Bonus </label> 
-              <div className=" h-18 w-18 p-4 border-4 flex flex-col flex-none justify-center items-center">
-              <input id="profBonus" className=" p-2 box-content text-xl text-center hover:outline-dashed" maxLength={2} size={2} type="text">
-              </input>
+export default function BodyContent() {
+  return (
+    <div className="border-8 border-solid" id="main-sheet">
+      {/* Left Column */}
+      <div className="xs:flex xs:flex-col grid-flow-col grid-cols-4 grid-rows-8 gap-4 md:grid">
+        <div className="col-span-2 row-span-1 mr-2 grid grid-flow-col grid-cols-3 place-content-baseline p-2 text-center">
+          <div className="relative flex flex-col border-x-2 px-4 text-sm">
+            <label htmlFor="profBonus"> Proficiency Bonus </label>
+            <div className=" h-18 w-18 flex flex-none flex-col items-center justify-center border-4 p-4">
+              <input
+                id="profBonus"
+                className=" box-content p-2 text-center text-xl hover:outline-dashed"
+                maxLength={2}
+                size={2}
+                type="text"
+              ></input>
+            </div>
           </div>
+          <div className="flex flex-col border-x-2 px-2 text-sm">
+            <label htmlFor="passivePerception"> Passive Perception </label>
+            <div className=" h-18 w-18 flex flex-none flex-col items-center justify-center border-4 p-4">
+              <input
+                id="passivePerception"
+                className=" box-content p-2 text-center text-xl hover:outline-dashed"
+                maxLength={2}
+                size={2}
+              ></input>
+            </div>
           </div>
-          <div className="flex flex-col text-sm px-2 border-x-2"> 
-          <label htmlFor="passivePerception"> Passive Perception </label> 
-               <div className=" h-18 w-18 p-4 border-4 flex flex-col flex-none justify-center items-center">
-              <input id="passivePerception" className=" p-2 box-content text-xl text-center hover:outline-dashed" maxLength={2} size={2}>
-              </input>
-          </div>
-          </div>
-          <div className="flex flex-col text-sm px-2 border-x-2">
-              <label htmlFor="inspirationInput"> Inspiration </label> 
-              <div className=" h-18 w-18 p-4 border-4 flex flex-col flex-none justify-center items-center">
-              <input id="inspirationInput" className=" p-2 box-content text-xl text-center hover:outline-dashed" maxLength={2} size={2}>
-              </input>
+          <div className="flex flex-col border-x-2 px-2 text-sm">
+            <label htmlFor="inspirationInput"> Inspiration </label>
+            <div className=" h-18 w-18 flex flex-none flex-col items-center justify-center border-4 p-4">
+              <input
+                id="inspirationInput"
+                className=" box-content p-2 text-center text-xl hover:outline-dashed"
+                maxLength={2}
+                size={2}
+              ></input>
+            </div>
           </div>
         </div>
-       
-        </div>
-        
-        { abilityTitles.map((title) => {
+        {abilityTitles.map((title) => {
           return (
-            <div className="row-span-1 col-span-2 border-solid border-4 mr-2">
-              <div className="box-border h-24 w-24 border-4 relative">
-              <input id="`${title}'Input" className=" p-2 box-content text-xl text-center hover:outline-dashed absolute top-1 right-1" maxLength={2} size={2} placeholder="8" />
-              <div className="absolute bottom-0 left-0"> {title} </div>
-                <div className="box-border h-9 w-9 p-2 border-4 absolute top-0">
-                </div>
+            <div className="col-span-2 row-span-1 mr-2 grid border-4 border-solid">
+              <div className="relative box-border h-24 w-24 border-4">
+                <input
+                  id="`${title}'Input"
+                  className=" absolute right-1 top-1 box-content p-2 text-center text-xl hover:outline-dashed"
+                  maxLength={2}
+                  size={2}
+                  placeholder="8"
+                />
+                <div className="absolute bottom-0 left-0"> {title} </div>
+                <div className="absolute top-0 box-border h-9 w-9 border-4 p-2"></div>
+              </div>
+              <div id="" className="justify-self-end">
+                Hey
               </div>
             </div>
-          )
+          );
         })}
-     
-        
-        
+
         {/* Right Column */}
-        <div className="row-span-8 col-start-3 col-span-2 border-solid border-4 text-center ml-2">
+        <div className="row-span-8 col-span-2 col-start-3 ml-2 border-4 border-solid text-center">
           Hay
         </div>
       </div>
-      
     </div>
-    )
+  );
 }
