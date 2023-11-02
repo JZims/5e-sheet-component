@@ -1,6 +1,6 @@
 import { ReactElement } from "react";
 
-const abilityTitles = [
+const abilityTitles: string[] = [
   "Strength",
   "Dexterity",
   "Constitution",
@@ -9,23 +9,28 @@ const abilityTitles = [
   "Charisma",
 ];
 
-const AbilityScoreBlock = (stat: string): ReactElement => {
+const AbilityScoreBlock = (props: { stat: String }): ReactElement => {
   return (
     <>
-      <div className="col-span-2 row-span-1 mr-2 grid border-4 border-solid">
+      <div className="col-span-2 row-span-1 mr-2 grid border-4 grid-flow-col border-solid">
         <div className="relative box-border h-24 w-24 border-4">
           <input
-            id="`${title}'Input"
+            id={props.stat.toLowerCase() + "Input"}
             className=" absolute right-1 top-1 box-content p-2 text-center text-xl hover:outline-dashed"
             maxLength={2}
             size={2}
             placeholder="8"
           />
-          <div className="absolute bottom-0 left-0"> {stat} </div>
-          <div className="absolute top-0 box-border h-9 w-9 border-4 p-2"></div>
+          
+          <div className="absolute bottom-0 left-0"> {props.stat} </div>
+          <input id={props.stat.toLowerCase() + "Modifier"}  className="absolute top-0 box-border h-9 w-9 border-4 p-2 justify-self-center" value="0" disabled />
+
         </div>
-        <div id="" className="justify-self-end">
-          Hey
+    
+        <div className="">
+          <input type="checkbox" value="trained" id={props.stat.toLowerCase() + "Trained"}/>
+          <input type="text" id={props.stat.toLowerCase() + "SavingThrowMod"} className="w-10" maxLength={2} />
+          <label htmlFor={props.stat.toLowerCase() + "Trained"}> Saving Throws </label>
         </div>
       </div>
     </>
@@ -42,7 +47,7 @@ export default function BodyContent() {
             <label htmlFor="profBonus"> Proficiency Bonus </label>
             <div className=" h-18 w-18 flex flex-none flex-col items-center justify-center border-4 p-4">
               <input
-                id="profBonus"
+                id="proficiencyBonus"
                 className=" box-content p-2 text-center text-xl hover:outline-dashed"
                 maxLength={2}
                 size={2}
@@ -73,25 +78,8 @@ export default function BodyContent() {
             </div>
           </div>
         </div>
-        {abilityTitles.map((title) => {
-          return (
-            <div className="col-span-2 row-span-1 mr-2 grid border-4 border-solid">
-              <div className="relative box-border h-24 w-24 border-4">
-                <input
-                  id="`${title}'Input"
-                  className=" absolute right-1 top-1 box-content p-2 text-center text-xl hover:outline-dashed"
-                  maxLength={2}
-                  size={2}
-                  placeholder="8"
-                />
-                <div className="absolute bottom-0 left-0"> {title} </div>
-                <div className="absolute top-0 box-border h-9 w-9 border-4 p-2"></div>
-              </div>
-              <div id="" className="justify-self-end">
-                Hey
-              </div>
-            </div>
-          );
+        {abilityTitles.map((title, indx) => {
+          return <AbilityScoreBlock stat={title} key={indx} />;
         })}
 
         {/* Right Column */}
