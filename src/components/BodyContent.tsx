@@ -1,13 +1,12 @@
 import { ReactElement } from "react";
 
-
 const abilityTitles = {
-  "Strength": ["Athletics"],
-  "Dexterity": ["Acrobatics", "Sleight of Hand", "Stealth"],
-  "Constitution": [],
-  "Intelligence": ["Arcana","History","Investigation", "Nature", "Religion"],
-  "Wisdom": ["Animal Handling","Insight", "Medicine"],
-  "Charisma": ["Deception", "Intimidation", "Performance", "Persuasion"]
+  Strength: ["Athletics"],
+  Dexterity: ["Acrobatics", "Sleight of Hand", "Stealth"],
+  Constitution: [],
+  Intelligence: ["Arcana", "History", "Investigation", "Nature", "Religion"],
+  Wisdom: ["Animal Handling", "Insight", "Medicine"],
+  Charisma: ["Deception", "Intimidation", "Performance", "Persuasion"],
 };
 
 const globalBonuses: string[] = [
@@ -23,27 +22,31 @@ const GlobalBonusBlock = (props: { stat: String }): ReactElement => {
     <>
       <div className="flex flex-col border-x-2 px-2 text-sm">
         <label htmlFor={tagId}> {props.stat} </label>
-        
-          <input
-            id={tagId}
-            pattern="\b([1-9]|[12][0-9]|3[0-2])\b"
-            onInvalid={(e) =>
-              (e.target as HTMLInputElement).setCustomValidity("")
-            }
-            className="peer box-content p-2 text-center text-xl outline-none invalid:text-red-600"
-            maxLength={2}
-            size={2}
-          />
-          <p className=" invisible text-xs text-red-600 peer-invalid:visible">
-            Reasonable Numbers only!
-          </p>
-        
+
+        <input
+          id={tagId}
+          pattern="\b([1-9]|[12][0-9]|3[0-2])\b"
+          onInvalid={(e) =>
+            (e.target as HTMLInputElement).setCustomValidity("")
+          }
+          className="peer box-content p-2 text-center text-xl outline-none invalid:text-red-600"
+          maxLength={2}
+          size={2}
+        />
+        <p className=" invisible text-xs text-red-600 peer-invalid:visible">
+          Reasonable Numbers only!
+        </p>
       </div>
     </>
   );
 };
 
-const AbilityScoreBlock = (props: { stat: String, abilties: String[] | null}): ReactElement => {
+const AbilityScoreBlock = (props: {
+  stat: String;
+  skills: String[] | [] | any;
+}): ReactElement => {
+  console.log(props.skills);
+
   return (
     <>
       <div className="col-span-2 row-span-1 mr-2 grid grid-flow-col border-4 border-solid">
@@ -75,7 +78,7 @@ const AbilityScoreBlock = (props: { stat: String, abilties: String[] | null}): R
             <input
               type="text"
               id={props.stat.toLowerCase() + "SavingThrowMod"}
-              className="mx-2 w-10 outline-none text-center"
+              className="mx-2 w-10 text-center outline-none"
               maxLength={2}
             />
             <label htmlFor={props.stat.toLowerCase() + "Trained"}>
@@ -83,6 +86,28 @@ const AbilityScoreBlock = (props: { stat: String, abilties: String[] | null}): R
               Saving Throws{" "}
             </label>
           </div>
+          {props.skills.length > 0
+            ? props.skills.map((skill: String) => {
+                return (
+                  <div>
+                    <input
+                      type="checkbox"
+                      value="trained"
+                      id={skill.toLowerCase() + "Trained"}
+                    />
+                    <input
+                      type="text"
+                      id={skill.toLowerCase() + "Mod"}
+                      className="mx-2 w-10 text-center outline-none"
+                      maxLength={2}
+                    />
+                    <label htmlFor={skill.toLowerCase() + "Trained"}>
+                      {skill}
+                    </label>
+                  </div>
+                );
+              })
+            : null}
         </div>
       </div>
     </>
@@ -100,10 +125,15 @@ export default function BodyContent() {
             return <GlobalBonusBlock stat={title} key={indx} />;
           })}
         </div>
-        { for (title in abilityTitles) {
-          return <AbilityScoreBlock stat={title} key={indx} />;
-          }
-        }
+        {Object.keys(abilityTitles).map((ability, indx) => {
+          return (
+            <AbilityScoreBlock
+              stat={ability}
+              skills={abilityTitles[ability as keyof typeof abilityTitles]}
+              key={indx}
+            />
+          );
+        })}
 
         {/* Right Column */}
         <div className="row-span-8 col-span-2 col-start-3 ml-2 border-4 border-solid text-center">
