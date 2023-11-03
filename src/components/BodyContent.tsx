@@ -1,13 +1,14 @@
 import { ReactElement } from "react";
 
-const abilityTitles: string[] = [
-  "Strength",
-  "Dexterity",
-  "Constitution",
-  "Intelligence",
-  "Wisdom",
-  "Charisma",
-];
+
+const abilityTitles = {
+  "Strength": ["Athletics"],
+  "Dexterity": ["Acrobatics", "Sleight of Hand", "Stealth"],
+  "Constitution": [],
+  "Intelligence": ["Arcana","History","Investigation", "Nature", "Religion"],
+  "Wisdom": ["Animal Handling","Insight", "Medicine"],
+  "Charisma": ["Deception", "Intimidation", "Performance", "Persuasion"]
+};
 
 const globalBonuses: string[] = [
   "Proficiency Bonus",
@@ -22,34 +23,34 @@ const GlobalBonusBlock = (props: { stat: String }): ReactElement => {
     <>
       <div className="flex flex-col border-x-2 px-2 text-sm">
         <label htmlFor={tagId}> {props.stat} </label>
-        <div className=" h-18 w-18 flex flex-none flex-col items-center justify-center border-4 p-4">
+        
           <input
             id={tagId}
             pattern="\b([1-9]|[12][0-9]|3[0-2])\b"
             onInvalid={(e) =>
               (e.target as HTMLInputElement).setCustomValidity("")
             }
-            className="peer box-content p-2 text-center text-xl invalid:text-red-600 hover:outline-dashed"
+            className="peer box-content p-2 text-center text-xl outline-none invalid:text-red-600"
             maxLength={2}
             size={2}
           />
-          <p className=" invisible text-sm text-red-600 peer-invalid:visible">
-            Numbers up to 32 only!
+          <p className=" invisible text-xs text-red-600 peer-invalid:visible">
+            Reasonable Numbers only!
           </p>
-        </div>
+        
       </div>
     </>
   );
 };
 
-const AbilityScoreBlock = (props: { stat: String }): ReactElement => {
+const AbilityScoreBlock = (props: { stat: String, abilties: String[] | null}): ReactElement => {
   return (
     <>
       <div className="col-span-2 row-span-1 mr-2 grid grid-flow-col border-4 border-solid">
         <div className="relative box-border h-24 w-24 border-4">
           <input
             id={props.stat.toLowerCase() + "Input"}
-            className=" absolute right-1 top-1 box-content p-2 text-center text-xl hover:outline-dashed"
+            className="absolute right-1 top-1 box-content p-2 text-center text-xl hover:outline-dashed"
             maxLength={2}
             size={2}
             placeholder="8"
@@ -74,7 +75,7 @@ const AbilityScoreBlock = (props: { stat: String }): ReactElement => {
             <input
               type="text"
               id={props.stat.toLowerCase() + "SavingThrowMod"}
-              className="mx-2 w-10 outline-4"
+              className="mx-2 w-10 outline-none text-center"
               maxLength={2}
             />
             <label htmlFor={props.stat.toLowerCase() + "Trained"}>
@@ -99,9 +100,10 @@ export default function BodyContent() {
             return <GlobalBonusBlock stat={title} key={indx} />;
           })}
         </div>
-        {abilityTitles.map((title, indx) => {
+        { for (title in abilityTitles) {
           return <AbilityScoreBlock stat={title} key={indx} />;
-        })}
+          }
+        }
 
         {/* Right Column */}
         <div className="row-span-8 col-span-2 col-start-3 ml-2 border-4 border-solid text-center">

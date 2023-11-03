@@ -7,7 +7,7 @@ import PageHeader from "./components/PageHeader";
 function App() {
 
   return (
-  <div className="max-h-screen flex flex-col">
+  <div className="bg-stone-100 max-h-screen flex flex-col">
     {/* Header Section */}
     <PageHeader />
 
