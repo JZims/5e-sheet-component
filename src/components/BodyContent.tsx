@@ -43,26 +43,26 @@ const GlobalBonusBlock = (props: { stat: String }): ReactElement => {
 
 const AbilityScoreBlock = (props: {
   stat: String;
-  skills: String[] | [] | any;
+  skills: String[] | [] ;
 }): ReactElement => {
   console.log(props.skills);
 
   return (
     <>
       <div className="col-span-2 row-span-1 mr-2 grid grid-flow-col border-4 border-solid">
-        <div className="relative box-border h-24 w-24 border-4">
+        <div className="relative box-border h-36 w-36 border-4">
           <input
             id={props.stat.toLowerCase() + "Input"}
-            className="absolute right-1 top-1 box-content p-2 text-center text-xl hover:outline-dashed"
+            className="absolute right-1 top-1 h-16 w-16 box-content p-2 text-center text-2xl hover:outline-dashed"
             maxLength={2}
             size={2}
             placeholder="8"
           />
 
-          <div className="absolute bottom-0 left-0"> {props.stat} </div>
+          <div className="absolute bottom-0 left-0 text-2xl text-center"> {props.stat} </div>
           <input
             id={props.stat.toLowerCase() + "Modifier"}
-            className="absolute top-0 box-border h-9 w-9 justify-self-center border-4 p-2"
+            className="absolute top-0 box-border h-12 w-12 text-center text-lg border-4 p-2"
             value="0"
             disabled
           />
@@ -82,14 +82,14 @@ const AbilityScoreBlock = (props: {
               maxLength={2}
             />
             <label htmlFor={props.stat.toLowerCase() + "Trained"}>
-              {" "}
+              
               Saving Throws{" "}
             </label>
           </div>
           {props.skills.length > 0
             ? props.skills.map((skill: String) => {
                 return (
-                  <div>
+                  <div className="mt-1">
                     <input
                       type="checkbox"
                       value="trained"
