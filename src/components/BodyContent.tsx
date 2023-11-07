@@ -117,9 +117,8 @@ const AbilityScoreBlock = (props: {
 export default function BodyContent() {
   return (
     <div className="border-8 border-solid" id="main-sheet">
-      {/* Left Column */}
-
       <div className="xs:flex xs:flex-col grid-flow-col grid-cols-4 grid-rows-8 gap-4 md:grid">
+          {/* Left Column */}
         <div className="col-span-2 row-span-1 mr-2 grid grid-flow-col grid-cols-3 place-content-baseline p-2 text-center">
           {globalBonuses.map((title, indx) => {
             return <GlobalBonusBlock stat={title} key={indx} />;
@@ -136,8 +135,8 @@ export default function BodyContent() {
         })}
 
         {/* Right Column */}
-        <div className="row-span-8 col-span-2 col-start-3 ml-2 border-4 border-solid text-center">
-          Hay
+        <div className="col-span-2 col-start-3 ml-2 border-4 border-solid text-center row-start-2 row-span-6">
+         Hay
         </div>
       </div>
     </div>
