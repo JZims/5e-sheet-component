@@ -45,7 +45,7 @@ const AbilityScoreBlock = (props: {
   stat: String;
   skills: String[] | [] ;
 }): ReactElement => {
-  console.log(props.skills);
+  
 
   return (
     <>
