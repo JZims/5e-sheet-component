@@ -15,8 +15,16 @@ const globalBonuses: string[] = [
   "Inspiration",
 ];
 
+const combatBonuses: string[] = [
+  "Armor Class", 
+  "Initiative",
+  "Speed"
+]
+
+
+
 const GlobalBonusBlock = (props: { stat: String }): ReactElement => {
-  const tagId = props.stat.split(" ").join("");
+  const tagId = props.stat.split(" ").join("_").toLowerCase();
 
   return (
     <>
@@ -76,10 +84,11 @@ const AbilityScoreBlock = (props: {
               id={props.stat.toLowerCase() + "Trained"}
             />
             <input
-              type="text"
+              type="number"
               id={props.stat.toLowerCase() + "SavingThrowMod"}
               className="mx-2 w-10 text-center outline-none"
               maxLength={2}
+              
             />
             <label htmlFor={props.stat.toLowerCase() + "Trained"}>
               
@@ -114,13 +123,27 @@ const AbilityScoreBlock = (props: {
   );
 };
 
+const CombatScoreBlock = (props: {stat: string}): ReactElement => {
+    const tagId = props.stat.split(" ").join("_").toLowerCase()
+
+  return(
+    <div className=" col-span-1 box-border border-4" id={tagId}>
+      <div className="flex flex-col border-x-2 px-2 text-lg items-center">
+        <label htmlFor={tagId} className="py-4"> {props.stat} </label>
+        <input id={tagId} placeholder="0" className="box-content p-2 text-center text-xl outline-none h-16 w-16" maxLength={2} size={2}></input>
+      </div>
+    </div>
+  )
+
+}
+
 export default function BodyContent() {
   return (
     <div className="border-8 border-solid" id="main-sheet">
       <div className="xs:flex xs:flex-col grid-flow-col grid-cols-4 grid-rows-8 gap-4 md:grid">
           {/* Left Column */}
         <div className="col-span-2 row-span-1 mr-2 grid grid-flow-col grid-cols-3 place-content-baseline p-2 text-center">
-          {globalBonuses.map((title, indx) => {
+          { globalBonuses.map((title, indx) => {
             return <GlobalBonusBlock stat={title} key={indx} />;
           })}
         </div>
@@ -135,10 +158,17 @@ export default function BodyContent() {
         })}
 
         {/* Right Column */}
-        <div className="col-span-2 col-start-3 ml-2 border-4 border-solid text-center row-start-2 row-span-6">
-         Hay
+        <div className=" xs:flex xs:flex-col md:grid auto-cols-max grid-cols-3 grid-flow-col col-span-2 col-start-3 ml-2 border-2 border-solid text-center row-start-1 row-span-1">
+         { combatBonuses.map((stat, indx) => {
+           return  <CombatScoreBlock key={indx} stat={stat} />
+         })}
+          
+        </div>
+          <div className="col-span-2 col-start-3 ml-2 border-4 border-solid text-center row-start-2 row-span-6">
+             Hay
+          </div>
         </div>
       </div>
-    </div>
+    
   );
 }
