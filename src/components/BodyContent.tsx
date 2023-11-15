@@ -57,7 +57,7 @@ const AbilityScoreBlock = (props: {
 
   return (
     <>
-      <div className="col-span-2 row-span-1 mr-2 grid grid-flow-col border-4 border-solid">
+      <div className="col-span-2 row-span-1 mx-2 grid grid-flow-col border-4 border-solid">
         <div className="relative box-border h-36 w-36 border-4">
           <input
             id={props.stat.toLowerCase() + "Input"}
@@ -127,8 +127,8 @@ const CombatScoreBlock = (props: {stat: string}): ReactElement => {
     const tagId = props.stat.split(" ").join("_").toLowerCase()
 
   return(
-    <div className=" col-span-1 box-border border-4" id={tagId}>
-      <div className="flex flex-col border-x-2 px-2 text-lg items-center">
+    <div className=" col-span-1 box-border border-2" id={tagId}>
+      <div className="flex flex-col px-2 text-lg items-center">
         <label htmlFor={tagId} className="py-4"> {props.stat} </label>
         <input id={tagId} placeholder="0" className="box-content p-2 text-center text-xl outline-none h-16 w-16" maxLength={2} size={2}></input>
       </div>
@@ -158,17 +158,28 @@ export default function BodyContent() {
         })}
 
         {/* Right Column */}
-        <div className=" xs:flex xs:flex-col md:grid auto-cols-max grid-cols-3 grid-flow-col col-span-2 col-start-3 ml-2 border-2 border-solid text-center row-start-1 row-span-1">
+        <div className="xs:flex xs:flex-col md:grid auto-cols-max grid-cols-3 grid-flow-col col-span-2 col-start-3 ml-2 border-2 border-solid text-center row-start-1 row-span-1">
+         
          { combatBonuses.map((stat, indx) => {
            return  <CombatScoreBlock key={indx} stat={stat} />
          })}
           
         </div>
-          <div className="col-span-2 col-start-3 ml-2 border-4 border-solid text-center row-start-2 row-span-6">
-             Hay
-          </div>
+        
+        <div className=" col-start-3 col-span-2 row-span-3 mx-2 grid grid-flow-col border-4 border-solid rounded-lg"> 
+            Vitals - HP Max, HP Current, Any Conditions
+            Level in Each Class, Total XP, XP to next Level
+            Basic Bio Info
         </div>
+        <div className=" col-start-3 col-span-2 row-span-2 mx-2 grid grid-flow-col border-4 border-solid rounded-lg"> 
+            Weapon Attacks, Bonuses, Ammo/Ammo Types, Alt Attacks
+        </div>
+        <div className=" col-start-3 col-span-2 row-span-2 mx-2 grid grid-flow-col border-4 border-solid rounded-lg"> 
+            Spells- Spell Slots Available, Special Class Abilities
+        </div>
+        
       </div>
+    </div>
     
   );
 }
