@@ -139,17 +139,43 @@ const CombatScoreBlock = (props: {stat: string}): ReactElement => {
 
 const VitalsBlock = (props: {stat: string | null}): ReactElement => {
   console.log(props.stat)
+
   return(
-    <div className="col-span-1 row-span-1">
-          <p>Vitals - HP Max, HP Current, Any Conditions
-            Level in Each Class, Total XP, XP to next Level
-            Basic Bio Info</p>
-    </div>
+    <>
+      <div className="row-start-1 row-span-2 border-2">
+            Vitals - HP Max, HP Current
+      </div>
+      <div className="row-start-3 row-span-2 border-2">
+      Total XP, XP to next Level
+  
+      </div>
+      <div className="row-start-5 row-span-4 border-2">
+      Any Conditions, Level in Each Class,
+        
+      </div>
+
+    </>
   )
 }
 
 const AttacksBlock = (props: {stat: string}): ReactElement => {
 
+  return(
+    <>
+      <div className="row-start-1 row-span-2 border-2">
+      Weapon Attacks
+      </div>
+      <div className="row-start-3 row-span-2 border-2">
+       Attack Bonuses
+      </div>
+      <div className="row-start-5 row-span-2 border-2">
+      Ammo/Ammo Types
+      </div>
+      <div className="row-start-7 row-span-2 border-2">
+      Alt Attacks
+      </div>
+    </>
+  )
 }
 
 const SpellsBlock = (props: {stat: string}): ReactElement => {
@@ -185,13 +211,13 @@ export default function BodyContent() {
           
         </div>
         
-        <div className=" col-start-3 col-span-2 row-span-3 mx-2 grid grid-flow-col border-4 border-solid rounded-lg"> 
+        <div className=" col-start-3 col-span-2 row-span-3 mx-2 grid grid-rows-8 grid-flow-col border-4 rounded-lg"> 
             <VitalsBlock stat={"hey"}/>
         </div>
-        <div className=" col-start-3 col-span-2 row-span-2 mx-2 grid grid-flow-col border-4 border-solid rounded-lg"> 
-            Weapon Attacks, Bonuses, Ammo/Ammo Types, Alt Attacks
+        <div className=" col-start-3 col-span-2 row-span-2 mx-2 grid grid-rows-8 grid-flow-col border-4 rounded-lg"> 
+            <AttacksBlock stat={"hey"} />
         </div>
-        <div className=" col-start-3 col-span-2 row-span-2 mx-2 grid grid-flow-col border-4 border-solid rounded-lg"> 
+        <div className=" col-start-3 col-span-2 row-span-2 mx-2 grid grid-flow-col border-4 rounded-lg"> 
             Spells- Spell Slots Available, Special Class Abilities
         </div>
         
