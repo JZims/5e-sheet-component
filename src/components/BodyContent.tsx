@@ -58,7 +58,7 @@ const AbilityScoreBlock = (props: {
   return (
     <>
       <div className="col-span-2 row-span-1 mx-2 grid grid-flow-col border-4 border-solid">
-        <div className="relative box-border h-36 w-36 border-4">
+        <div className="relative box-border h-36 w-36 border-r-4 border-b-4">
           <input
             id={props.stat.toLowerCase() + "Input"}
             className="absolute right-1 top-1 h-16 w-16 box-content p-2 text-center text-2xl hover:outline-dashed"
@@ -70,7 +70,7 @@ const AbilityScoreBlock = (props: {
           <div className="absolute bottom-0 left-0 text-2xl text-center"> {props.stat} </div>
           <input
             id={props.stat.toLowerCase() + "Modifier"}
-            className="absolute top-0 box-border h-12 w-12 text-center text-lg border-4 p-2"
+            className="absolute top-0 box-border h-12 w-12 text-center text-lg border-8 p-2"
             value="0"
             disabled
           />
@@ -137,6 +137,25 @@ const CombatScoreBlock = (props: {stat: string}): ReactElement => {
 
 }
 
+const VitalsBlock = (props: {stat: string | null}): ReactElement => {
+  console.log(props.stat)
+  return(
+    <div className="col-span-1 row-span-1">
+          <p>Vitals - HP Max, HP Current, Any Conditions
+            Level in Each Class, Total XP, XP to next Level
+            Basic Bio Info</p>
+    </div>
+  )
+}
+
+const AttacksBlock = (props: {stat: string}): ReactElement => {
+
+}
+
+const SpellsBlock = (props: {stat: string}): ReactElement => {
+
+}
+
 export default function BodyContent() {
   return (
     <div className="border-8 border-solid" id="main-sheet">
@@ -167,9 +186,7 @@ export default function BodyContent() {
         </div>
         
         <div className=" col-start-3 col-span-2 row-span-3 mx-2 grid grid-flow-col border-4 border-solid rounded-lg"> 
-            Vitals - HP Max, HP Current, Any Conditions
-            Level in Each Class, Total XP, XP to next Level
-            Basic Bio Info
+            <VitalsBlock stat={"hey"}/>
         </div>
         <div className=" col-start-3 col-span-2 row-span-2 mx-2 grid grid-flow-col border-4 border-solid rounded-lg"> 
             Weapon Attacks, Bonuses, Ammo/Ammo Types, Alt Attacks
